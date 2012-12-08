@@ -27,7 +27,8 @@ main = do
     } `additionalKeys`
     [
       ((mod4Mask .|. shiftMask, xK_l), spawn "gnome-screensaver-command -l")
-      ,((mod4Mask .|. shiftMask, xK_c), spawn "emacsclient -c -n &")
+      , ((mod4Mask .|. shiftMask, xK_a), spawn "gnome-screensaver-command -a")
+      , ((mod4Mask .|. shiftMask, xK_c), spawn "emacsclient -c -n &")
     ]
     
 
