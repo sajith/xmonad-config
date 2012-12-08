@@ -1,0 +1,4 @@
+* TODO some means of locking the screen.
+* TODO xmobar -- weather information, preferably based on network location.
+* TODO xmobar -- network manager
+* TODO xmobar -- make it look pretty
