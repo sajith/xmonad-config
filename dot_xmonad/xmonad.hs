@@ -4,6 +4,11 @@ import XMonad.Hooks.ManageDocks
 import System.IO
 import XMonad.Util.Run (spawnPipe)
 
+myManageHook = composeAll
+  [   className =? "Gimp"      --> doFloat
+    , className =? "Vncviewer" --> doFloat
+  ]
+
 main = do
   xmproc <- spawnPipe "~/.cabal/bin/xmobar ~/.xmobar/xmobarrc"
   xmonad $ defaultConfig
@@ -11,7 +16,8 @@ main = do
     , modMask            = mod4Mask
     , borderWidth        = 3
     , focusedBorderColor = "darkgreen"
-    , manageHook         = manageDocks <+> manageHook defaultConfig
+    , manageHook         = manageDocks <+> myManageHook 
+                                       <+> manageHook defaultConfig
     , layoutHook         = avoidStruts $ layoutHook defaultConfig
     , logHook            = dynamicLogWithPP xmobarPP
                            { ppOutput = hPutStrLn xmproc
