@@ -2,3 +2,4 @@
 * TODO xmobar -- weather information, preferably based on network location.
 * TODO xmobar -- network manager
 * TODO xmobar -- make it look pretty
+* TODO some means of caching keys -- how does GNOME does this?
