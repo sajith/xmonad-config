@@ -1,6 +1,8 @@
-* TODO some means of locking the screen.
+* DONE some means of locking the screen.
+  CLOSED: [2012-12-07 Fri 21:02]
 * TODO xmobar -- weather information, preferably based on network location.
 * TODO xmobar -- network manager
-* TODO xmobar -- make it look pretty
+* DONE xmobar -- make it look pretty
+  CLOSED: [2012-12-07 Fri 21:02]
 * TODO some means of caching keys -- how does GNOME does this?
 * TODO try out xmonad-log-applet

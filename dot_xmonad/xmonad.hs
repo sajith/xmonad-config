@@ -3,6 +3,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import System.IO
 import XMonad.Util.Run (spawnPipe)
+import XMonad.Util.EZConfig (additionalKeys)
 
 myManageHook = composeAll
   [   className =? "Gimp"      --> doFloat
@@ -23,6 +24,10 @@ main = do
                            { ppOutput = hPutStrLn xmproc
                            , ppTitle  = xmobarColor "green" "" . shorten 80
                            }
-    } 
+    } `additionalKeys`
+    [
+      ((mod4Mask .|. shiftMask, xK_l), spawn "gnome-screensaver-command -l")
+      ,((mod4Mask .|. shiftMask, xK_c), spawn "emacsclient -c -n &")
+    ]
     
 
