@@ -3,3 +3,4 @@
 * TODO xmobar -- network manager
 * TODO xmobar -- make it look pretty
 * TODO some means of caching keys -- how does GNOME does this?
+* TODO try out xmonad-log-applet
