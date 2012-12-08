@@ -1,0 +1,24 @@
+Config { font     = "-*-Fixed-Bold-R-Normal-*13-*-*-*-*-*-*-*",
+  , bgColor      = "black"
+  , fgColor      = "grey"
+  , border       = TopB
+  , borderColor  = "black"
+  , position     = Bottom
+  , hideOnStart  = False
+  , lowerOnStart = True
+  , persistent   = True
+  commands = [
+    Run Weather "KBMG" ["-t","<tempC>C","-L","64","-H","77",
+                          "--normal","green","--high","red",
+                          "--low","lightblue"] 3600,
+    Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10,
+    Run Memory ["-t","Mem:<usedratio>%"] 10,
+    Run Swap [] 10,
+    Run Date "%a %b %_d %l:%M" "date" 10,
+    Run Network "eth0" [] 10,
+    Run StdinReader
+  ]
+  , sepChar  = "%"
+  , alignSep = "}{"
+  , template = "%StdinReader% }{ %eth0% | %cpu% | %memory% * %swap% <fc=#ee9a00>%date%</fc> | %KBMG%"
+}
