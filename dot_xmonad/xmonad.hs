@@ -11,7 +11,7 @@ myManageHook = composeAll
   ]
 
 main = do
-  xmproc <- spawnPipe "~/.cabal/bin/xmobar ~/.xmobar/xmobarrc"
+  xmproc <- spawnPipe "xmobar ~/.xmobar/xmobarrc"
   xmonad $ defaultConfig
     { terminal           = "gnome-terminal"
     , modMask            = mod4Mask
