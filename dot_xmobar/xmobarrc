@@ -14,6 +14,12 @@ Config { font     = "-*-Fixed-Bold-R-Normal-*13-*-*-*-*-*-*-*",
                   "-L","40","-H","60",
                   "-l","lightblue",
                   "-n","gray90","-h","red"] 50,
+    Run BatteryP ["BAT0", "BAT1"]
+                 ["-t", "<acstatus><watts> (<left>% / <timeleft>3)",
+                  "-L", "10", "-H", "80", "-p", "3",
+                  "--", "-O", "<fc=green>On</fc> - ", "-o", "",
+                  "-L", "-15", "-H", "-5",
+                  "-l", "red", "-m", "blue", "-h", "green"] 600,
     Run Memory ["-t","Mem:<usedratio>%"] 10,
     Run Swap [] 10,
     Run Date "%a %b %_d %l:%M" "date" 10,
@@ -22,5 +28,5 @@ Config { font     = "-*-Fixed-Bold-R-Normal-*13-*-*-*-*-*-*-*",
   ]
   , sepChar  = "%"
   , alignSep = "}{"
-  , template = "%StdinReader% }{ | %eth0% | %cpu% | %memory% * %swap% | <fc=#ee9a00>%date%</fc> | %KBMG% | "
+  , template = "%StdinReader% }{ | %eth0% | %battery% | %cpu% | %memory% * %swap% | <fc=#ee9a00>%date%</fc> | %KBMG% | "
 
