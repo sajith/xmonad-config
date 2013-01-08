@@ -4,9 +4,7 @@ Config { font     = "-*-Fixed-Bold-R-Normal-*13-*-*-*-*-*-*-*",
   , border       = TopB
   , borderColor  = "black"
   , position     = Bottom
-  , hideOnStart  = False
   , lowerOnStart = True
-  , persistent   = True
   commands = [
     Run Weather "KBMG" ["-t","<tempC>C","-L","64","-H","77",
                           "--normal","green","--high","red",
@@ -19,10 +17,19 @@ Config { font     = "-*-Fixed-Bold-R-Normal-*13-*-*-*-*-*-*-*",
     Run Memory ["-t","Mem:<usedratio>%"] 10,
     Run Swap [] 10,
     Run Date "%a %b %_d %l:%M" "date" 10,
+    Run Network "wlan0" [] 10,
     Run Network "eth0" [] 10,
-    Run StdinReader
+    Run Network "usb0" [] 10,
+    Run StdinReader,
+    Run BatteryP ["BAT0"]
+                 ["-t", "<acstatus><watts> (<left>%)",
+                 "-L", "10", "-H", "80", "-p", "3",
+                 "--", "-O", "<fc=green>On</fc> - ", "-o", "",
+                 "-L", "-15", "-H", "-5",
+                 "-l", "red", "-m", "blue", "-h", "green"]
+                 600
   ]
   , sepChar  = "%"
   , alignSep = "}{"
-  , template = "%StdinReader% }{ %eth0% | %cpu% | %memory% * %swap% <fc=#ee9a00>%date%</fc> | %KBMG%" }
+  , template = "%StdinReader% }{ %wlan0% %eth0% %usb0% | %cpu% | %memory% * %swap% | %battery% | <fc=#ee9a00>%date%</fc> | %KBMG%" }
 
