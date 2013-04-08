@@ -38,8 +38,5 @@ Config { font     = "-*-Fixed-Bold-R-Normal-*13-*-*-*-*-*-*-*",
   , sepChar  = "%"
   , alignSep = "}{"
   , template = "%StdinReader% }{ %wlan0% %eth0% %usb0% | %cpu% | %memory% * %swap% | %battery% | <fc=#ee9a00>%date%</fc> | %KBMG%" }
-<<<<<<< HEAD
-=======
 
->>>>>>> c1a2cd0be11d708567f14e41dcd442243f818348
 
