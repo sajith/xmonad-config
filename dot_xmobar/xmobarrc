@@ -1,3 +1,4 @@
+-- -*- haskell -*-
 Config { font     = "-*-Fixed-Bold-R-Normal-*13-*-*-*-*-*-*-*",
   , bgColor      = "black"
   , fgColor      = "grey"
@@ -6,7 +7,8 @@ Config { font     = "-*-Fixed-Bold-R-Normal-*13-*-*-*-*-*-*-*",
   , position     = Bottom
   , lowerOnStart = True
   commands = [
-    Run Weather "KBMG" ["-t","<skyCondition> <tempC>C <tempF>F","-L","64","-H","77",
+    -- Find weather StationID from http://weather.noaa.gov/
+    Run Weather "KFWA" ["-t","<skyCondition> <tempC>C <tempF>F","-L","64","-H","77",
                           "--normal","green","--high","red",
                           "--low","lightblue"] 3600,
     Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10,
@@ -37,6 +39,6 @@ Config { font     = "-*-Fixed-Bold-R-Normal-*13-*-*-*-*-*-*-*",
   ]
   , sepChar  = "%"
   , alignSep = "}{"
-  , template = "%StdinReader% }{ %wlan0% %eth0% %usb0% | %cpu% | %memory% * %swap% | %battery% | <fc=#ee9a00>%date%</fc> | %KBMG%" }
+  , template = "%StdinReader% }{ %wlan0% %eth0% %usb0% | %cpu% | %memory% * %swap% | %battery% | <fc=#ee9a00>%date%</fc> | %KFWA%" }
 
 
