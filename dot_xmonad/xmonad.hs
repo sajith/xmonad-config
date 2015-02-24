@@ -1,9 +1,10 @@
-import XMonad
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ManageDocks
-import System.IO
-import XMonad.Util.Run (spawnPipe)
-import XMonad.Util.EZConfig (additionalKeys)
+import           System.IO
+import           XMonad
+import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.ManageDocks
+import           XMonad.Hooks.Script      (execScriptHook)
+import           XMonad.Util.EZConfig     (additionalKeys)
+import           XMonad.Util.Run          (spawnPipe)
 
 myManageHook = composeAll
   [   className =? "Gimp"      --> doFloat
@@ -17,20 +18,20 @@ main = do
     , modMask            = mod4Mask
     , borderWidth        = 2
     , focusedBorderColor = "darkgreen"
-    , manageHook         = manageDocks <+> myManageHook 
+    , manageHook         = manageDocks <+> myManageHook
                                        <+> manageHook defaultConfig
     , layoutHook         = avoidStruts $ layoutHook defaultConfig
     , logHook            = dynamicLogWithPP xmobarPP
                            { ppOutput = hPutStrLn xmproc
                            , ppTitle  = xmobarColor "green" "" . shorten 80
                            }
+    , startupHook        = execScriptHook "startup"
     } `additionalKeys`
     [
         -- ((mod4Mask .|. shiftMask, xK_l), spawn "xscreensaver-command -l")
         -- , ((mod4Mask .|. shiftMask, xK_a), spawn "xscreensaver-command -a")
         ((mod4Mask .|. shiftMask, xK_l), spawn "gnome-screensaver-command -l")
       , ((mod4Mask .|. shiftMask, xK_a), spawn "gnome-screensaver-command -a")
-      , ((mod4Mask .|. shiftMask, xK_e), spawn "emacsclient -c -n &")
+      , ((mod4Mask .|. shiftMask, xK_g), spawn "emacsclient -c -n &")
     ]
-    
 
