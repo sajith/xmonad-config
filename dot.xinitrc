@@ -19,3 +19,4 @@ xterm -e ssh-add
 
 exec xmonad
 
+# trayer --monitor 1 --edge right --width 10 --height 48 --expand true --transparent true &
