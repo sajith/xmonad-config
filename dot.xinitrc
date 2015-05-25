@@ -15,5 +15,7 @@ xsetroot -cursor_name left_ptr &
 eval `ssh-agent`
 xterm -e ssh-add
 
+# eval `gnome-keyring-daemon`
+
 exec xmonad
 
