@@ -1,44 +1,59 @@
 -- -*- haskell -*-
-Config { font     = "-*-Fixed-Bold-R-Normal-*13-*-*-*-*-*-*-*",
-  , bgColor      = "black"
-  , fgColor      = "grey"
-  , border       = TopB
-  , borderColor  = "black"
-  , position     = Bottom
-  , lowerOnStart = True
-  commands = [
-    -- Find weather StationID from http://weather.noaa.gov/
-    Run Weather "KFWA" ["-t","<skyCondition> <tempC>C <tempF>F","-L","64","-H","77",
-                          "--normal","green","--high","red",
-                          "--low","lightblue"] 3600,
-    Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10,
-    Run CoreTemp ["-t","Temp:<core0>|<core1>C",
-                  "-L","40","-H","60",
-                  "-l","lightblue",
-                  "-n","gray90","-h","red"] 50,
-    Run BatteryP ["BAT0", "BAT1"]
-                 ["-t", "<acstatus><watts> (<left>% / <timeleft>3)",
-                  "-L", "10", "-H", "80", "-p", "3",
-                  "--", "-O", "<fc=green>On</fc> - ", "-o", "",
-                  "-L", "-15", "-H", "-5",
-                  "-l", "red", "-m", "blue", "-h", "green"] 600,
-    Run Memory ["-t","Mem:<usedratio>%"] 10,
-    Run Swap [] 10,
-    Run Date "%a %b %_d %l:%M" "date" 10,
-    Run Network "wlan0" [] 10,
-    Run Network "eth0" [] 10,
-    Run Network "usb0" [] 10,
-    Run StdinReader,
-    Run BatteryP ["BAT0"]
-                 ["-t", "<acstatus><watts> (<left>%)",
-                 "-L", "10", "-H", "80", "-p", "3",
-                 "--", "-O", "<fc=green>On</fc> - ", "-o", "",
-                 "-L", "-15", "-H", "-5",
-                 "-l", "red", "-m", "blue", "-h", "green"]
-                 600
-  ]
-  , sepChar  = "%"
-  , alignSep = "}{"
-  , template = "%StdinReader% }{ %wlan0% %eth0% %usb0% | %cpu% | %memory% * %swap% | %battery% | <fc=#ee9a00>%date%</fc> | %KFWA%" }
+Config { font         = "-*-Fixed-Bold-R-Normal-*13-*-*-*-*-*-*-*",
+       , bgColor      = "black"
+       , fgColor      = "grey"
+       , border       = TopB
+       , borderColor  = "black"
+       , position     = Bottom
+       , lowerOnStart = True
 
+       , commands = [
+           -- Find weather StationID from http://weather.noaa.gov/
+           Run Weather "KFWA" [ "-t", "<skyCondition> <tempC>C <tempF>F"
+                              , "-L", "64", "-H", "77"
+                              , "--normal", "green"
+                              , "--high", "red"
+                              , "--low", "lightblue" ] 3600,
 
+           Run Cpu [ "-L", "3", "-H","50"
+                   , "--normal", "green"
+                   ,"--high", "red"] 10,
+
+           Run CoreTemp [ "-t", "Temp:<core0>|<core1>C"
+                        , "-L", "40", "-H", "60"
+                        , "-l", "lightblue"
+                        , "-n", "gray90", "-h", "red" ] 50,
+
+           Run BatteryP [ "BAT0", "BAT1" ]
+                        [ "-t", "<acstatus><watts> (<left>% / <timeleft>3)"
+                        , "-L", "10", "-H", "80"
+                        , "-p", "3"
+                        , "--", "-O", "<fc=green>On</fc> - ", "-o", ""
+                        , "-L", "-15", "-H", "-5"
+                        , "-l", "red", "-m", "blue", "-h", "green" ] 600,
+
+           Run Memory [ "-t", "Mem:<usedratio>%" ] 10,
+           Run Swap [] 10,
+
+           Run Date "%a %b %_d %l:%M" "date" 10,
+
+           Run Network "wlan0" [] 10,
+           Run Network "eth0" [] 10,
+           Run Network "usb0" [] 10,
+
+           Run StdinReader,
+
+           Run BatteryP ["BAT0"]
+                        [ "-t", "<acstatus><watts> (<left>%)"
+                        , "-L", "10", "-H", "80", "-p", "3"
+                        , "--", "-O", "<fc=green>On</fc> - ", "-o", ""
+                        , "-L", "-15", "-H", "-5"
+                        , "-l", "red", "-m", "blue", "-h", "green" ] 600
+           ]
+
+       , sepChar  = "%"
+       , alignSep = "}{"
+
+       , template = "%StdinReader% }{ %wlan0% %eth0% %usb0% | %cpu% | %memory% * %swap% | %battery% | <fc=#ee9a00>%date%</fc> | %KFWA%"
+
+       }
