@@ -18,7 +18,8 @@ main = do
         , modMask            = mod4Mask
         , borderWidth        = 2
         , focusedBorderColor = "darkgreen"
-        , manageHook         = manageDocks <+> myManageHook
+        , manageHook         = manageDocks
+                               <+> myManageHook
                                <+> manageHook defaultConfig
         , layoutHook         = avoidStruts $ layoutHook defaultConfig
         , logHook            = dynamicLogWithPP xmobarPP
