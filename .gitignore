@@ -1,4 +1,4 @@
-/dot_xmonad/xmonad-i386-linux
-/dot_xmonad/xmonad.errors
-/dot_xmonad/xmonad.hi
-/dot_xmonad/xmonad.o
+/xmonad-*
+/xmonad.errors
+/xmonad.hi
+/xmonad.o
