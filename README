@@ -1,2 +1,11 @@
 Ye olde XMonad and xmobar configuration.
 Nothing unusual, as one might expect.
+
+To place xmobar in the other screen:
+
+  kill -SIGUSR1 $(pidof xmobar)
+
+I like trayer this way:
+
+  trayer --monitor 1 --edge right --width 10 --height 48 --expand true --transparent true &
+
