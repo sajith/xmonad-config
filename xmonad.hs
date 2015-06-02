@@ -33,4 +33,5 @@ main = do
           ((mod4Mask .|. shiftMask, xK_l), spawn "gnome-screensaver-command -l")
         , ((mod4Mask .|. shiftMask, xK_a), spawn "gnome-screensaver-command -a")
         , ((mod4Mask .|. shiftMask, xK_g), spawn "emacsclient -c -n &")
+        , ((0, xK_Print), spawn "scrot -z")
         ]
