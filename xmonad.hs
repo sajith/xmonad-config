@@ -2,9 +2,11 @@ import           System.IO
 import           XMonad
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.ManageDocks
-import           XMonad.Hooks.Script      (execScriptHook)
-import           XMonad.Util.EZConfig     (additionalKeys)
-import           XMonad.Util.Run          (spawnPipe)
+import           XMonad.Hooks.Script        (execScriptHook)
+import           XMonad.Util.EZConfig       (additionalKeys)
+import           XMonad.Util.Run            (spawnPipe)
+
+import           XMonad.Hooks.ManageHelpers
 
 myManageHook = composeAll
                [ className =? "Gimp"      --> doFloat
@@ -21,6 +23,7 @@ main = do
         , manageHook         = manageDocks
                                <+> myManageHook
                                <+> manageHook defaultConfig
+                               <+> (isFullscreen --> doFloat)
         , layoutHook         = avoidStruts $ layoutHook defaultConfig
         , logHook            = dynamicLogWithPP xmobarPP
                                { ppOutput = hPutStrLn xmproc
