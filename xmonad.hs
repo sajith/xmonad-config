@@ -7,6 +7,7 @@ import           XMonad.Util.EZConfig       (additionalKeys)
 import           XMonad.Util.Run            (spawnPipe)
 
 import           XMonad.Hooks.ManageHelpers
+import           XMonad.Layout.NoBorders
 
 myManageHook = composeAll
                [ className =? "Gimp"      --> doFloat
@@ -24,7 +25,7 @@ main = do
                                <+> myManageHook
                                <+> manageHook defaultConfig
                                <+> (isFullscreen --> doFullFloat)
-        , layoutHook         = avoidStruts $ layoutHook defaultConfig
+        , layoutHook         = avoidStruts $ layoutHook defaultConfig ||| noBorders Full
         , logHook            = dynamicLogWithPP xmobarPP
                                { ppOutput = hPutStrLn xmproc
                                , ppTitle  = xmobarColor "green" "" . shorten 80
