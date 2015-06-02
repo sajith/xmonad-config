@@ -23,7 +23,7 @@ main = do
         , manageHook         = manageDocks
                                <+> myManageHook
                                <+> manageHook defaultConfig
-                               <+> (isFullscreen --> doFloat)
+                               <+> (isFullscreen --> doFullFloat)
         , layoutHook         = avoidStruts $ layoutHook defaultConfig
         , logHook            = dynamicLogWithPP xmobarPP
                                { ppOutput = hPutStrLn xmproc
