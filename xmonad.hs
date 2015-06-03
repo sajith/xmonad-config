@@ -32,10 +32,17 @@ main = do
                                }
         , startupHook        = execScriptHook "startup"
         } `additionalKeys`
-        [ -- ((mod4Mask .|. shiftMask, xK_l), spawn "xscreensaver-command -l")
-          -- , ((mod4Mask .|. shiftMask, xK_a), spawn "xscreensaver-command -a")
-          ((mod4Mask .|. shiftMask, xK_l), spawn "gnome-screensaver-command -l")
-        , ((mod4Mask .|. shiftMask, xK_a), spawn "gnome-screensaver-command -a")
+        [ ((mod4Mask .|. shiftMask, xK_l), xScreenLock)
+        , ((mod4Mask .|. shiftMask, xK_a), xScreenActivate)
         , ((mod4Mask .|. shiftMask, xK_g), spawn "emacsclient -c -n &")
         , ((0, xK_Print), spawn "scrot -z")
         ]
+
+xScreenLock, xScreenActivate :: MonadIO m => m ()
+xScreenLock = spawn "gnome-screensaver-command -l"
+xScreenActivate = spawn "xscreensaver-command -a"
+
+gScreenLock, gScreenActivate :: MonadIO m => m ()
+gScreenLock = spawn "xscreensaver-command -l"
+gScreenActivate = spawn "gnome-screensaver-command -a"
+
