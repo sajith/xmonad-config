@@ -9,11 +9,6 @@ import           XMonad.Util.Run            (spawnPipe)
 import           XMonad.Hooks.ManageHelpers
 import           XMonad.Layout.NoBorders
 
-myManageHook = composeAll
-               [ className =? "Gimp"      --> doFloat
-               , className =? "Vncviewer" --> doFloat
-               ]
-
 main = do
     xmproc <- spawnPipe "xmobar ~/.config/xmobar/xmobarrc"
     xmonad $ defaultConfig
@@ -22,7 +17,6 @@ main = do
         , borderWidth        = 2
         , focusedBorderColor = "darkgreen"
         , manageHook         = manageDocks
-                               <+> myManageHook
                                <+> manageHook defaultConfig
                                <+> (isFullscreen --> doFullFloat)
         , layoutHook         = avoidStruts $ layoutHook defaultConfig ||| noBorders Full
