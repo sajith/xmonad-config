@@ -33,10 +33,10 @@ main = do
         ]
 
 xScreenLock, xScreenActivate :: MonadIO m => m ()
-xScreenLock = spawn "gnome-screensaver-command -l"
+xScreenLock = spawn "xscreensaver-command -l"
 xScreenActivate = spawn "xscreensaver-command -a"
 
 gScreenLock, gScreenActivate :: MonadIO m => m ()
-gScreenLock = spawn "xscreensaver-command -l"
+gScreenLock = spawn "gnome-screensaver-command -l"
 gScreenActivate = spawn "gnome-screensaver-command -a"
 
